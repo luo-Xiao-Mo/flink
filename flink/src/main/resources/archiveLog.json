@@ -1,0 +1,107 @@
+{
+  "message": [
+    {
+      "before": null,
+      "after": {
+        "SID": "1",
+        "SNAME": "1"
+      },
+      "source": {
+        "version": "1.5.4.Final",
+        "connector": "oracle",
+        "name": "oracle_logminer",
+        "ts_ms": 1646652622448,
+        "snapshot": "last",
+        "db": "XE",
+        "sequence": null,
+        "schema": "family",
+        "table": "info",
+        "txId": null,
+        "scn": "46495548600",
+        "commit_scn": null,
+        "lcr_position": null
+      },
+      "op": "c",
+      "ts_ms": 1646652622456,
+      "transaction": null
+    },
+    {
+      "before": {
+        "SID": "1",
+        "SNAME": "1"
+      },
+      "after": {
+        "SID": "1",
+        "SNAME": "2"
+      },
+      "source": {
+        "version": "1.5.4.Final",
+        "connector": "oracle",
+        "name": "oracle_logminer",
+        "ts_ms": 1646680890000,
+        "snapshot": "false",
+        "db": "XE",
+        "sequence": null,
+        "schema": "family",
+        "table": "info",
+        "txId": "0a0009007f231200",
+        "scn": "46495572789",
+        "commit_scn": "46495590649",
+        "lcr_position": null
+      },
+      "op": "u",
+      "ts_ms": 1646652829683,
+      "transaction": null
+    },
+    {
+      "before": {
+        "SID": "1",
+        "SNAME": "2"
+      },
+      "after": null,
+      "source": {
+        "version": "1.5.4.Final",
+        "connector": "oracle",
+        "name": "oracle_logminer",
+        "ts_ms": 1646819782000,
+        "snapshot": "false",
+        "db": "XE",
+        "sequence": null,
+        "schema": "FLINK",
+        "table": "CDC2",
+        "txId": "0a00140054270000",
+        "scn": "2491112",
+        "commit_scn": "2491120",
+        "lcr_position": null
+      },
+      "op": "d",
+      "ts_ms": 1646791645954,
+      "transaction": null
+    },
+    {
+      "before": null,
+      "after": {
+        "SID": "1",
+        "SNAME": "1"
+      },
+      "source": {
+        "version": "1.5.4.Final",
+        "connector": "oracle",
+        "name": "oracle_logminer",
+        "ts_ms": 1646652622448,
+        "snapshot": "last",
+        "db": "XE",
+        "sequence": null,
+        "schema": "family",
+        "table": "info",
+        "txId": null,
+        "scn": "46495548600",
+        "commit_scn": null,
+        "lcr_position": null
+      },
+      "op": "r",
+      "ts_ms": 1646652622456,
+      "transaction": null
+    }
+  ]
+}
