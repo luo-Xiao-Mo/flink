@@ -38,7 +38,6 @@ public class SourceSql {
                 "     'scan.startup.mode' = 'initial')");
         TableResult tableResult = tableEnv.executeSql("select * from info");
         AbstractService<Info> abstractService = new InfoService();
-
         tableResult.collect().forEachRemaining(item -> {
             Info info = Info.builder().king(item.getKind().shortString())
                     .SEX(String.valueOf(item.getField("SEX")))
