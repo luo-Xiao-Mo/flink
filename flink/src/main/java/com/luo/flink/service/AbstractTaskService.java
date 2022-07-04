@@ -15,8 +15,7 @@ public abstract class AbstractTaskService {
         Configuration configuration = tableEnv.getConfig().getConfiguration();
         configuration.setString("table.exec.sink.not-null-enforcer", "drop");
         tableEnv.executeSql(getSql());
-        TableResult tableResult = getTableResult(tableEnv);
-        handlerTableResult(tableResult);
+        handlerTableResult(getTableResult(tableEnv));
     }
 
     abstract String getSql();

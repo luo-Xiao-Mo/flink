@@ -109,7 +109,7 @@
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>
-                                        com.luo.flink.main.SourceStream
+                                        com.luo.flink.main.SourceSql
                                     </mainClass>
                                 </transformer>
                             </transformers>
