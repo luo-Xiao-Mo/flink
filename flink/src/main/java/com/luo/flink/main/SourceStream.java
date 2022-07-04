@@ -3,11 +3,7 @@ package com.luo.flink.main;
 import com.luo.flink.entity.Table;
 import com.luo.flink.entity.Task;
 import com.luo.flink.sink.OracleSink;
-import com.luo.flink.util.DruidUtil;
 import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 
 
 public class SourceStream {
@@ -22,7 +18,6 @@ public class SourceStream {
                 .tableName("FAMILY.INFO")
                 .build();
         task.exec();
-
     }
 }
 
