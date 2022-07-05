@@ -1,5 +1,6 @@
 package com.luo.flink.service;
 
+import com.luo.flink.entity.business.GyMlTjzy;
 import com.luo.flink.entity.business.Info;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
@@ -19,7 +20,7 @@ public class GyMlTjzyTaskService extends AbstractTaskService{
                 "     'password' = 'zyhcdc',\n" +
                 "     'database-name' = 'XE',\n" +
                 "     'schema-name' = 'FAMILY',\n" +
-                "     'table-name' = 'INFO',\n" +
+                "     'table-name' = 'GY_ML_TJZY',\n" +
                 "     'debezium.log.mining.continuous.mine'='true',\n" +
                 "     'debezium.log.mining.strategy'='online_catalog',\n" +
                 "     'debezium.database.tablename.case.insensitive'='false',\n" +
@@ -33,12 +34,11 @@ public class GyMlTjzyTaskService extends AbstractTaskService{
 
     @Override
     void handlerTableResult(TableResult tableResult) {
-        AbstractService<Info> abstractService = new InfoService();
+        AbstractService<GyMlTjzy> abstractService = new GyMlTjzyService();
         tableResult.collect().forEachRemaining(item -> {
-            Info info = Info.builder().king(item.getKind().shortString())
-                    .SEX(String.valueOf(item.getField("SEX")))
-                    .SID(String.valueOf(item.getField("SID")))
-                    .SNAME(String.valueOf(item.getField("SNAME")))
+            GyMlTjzy info = GyMlTjzy.builder().king(item.getKind().shortString())
+                    .code(String.valueOf(item.getField("code")))
+                    .name(String.valueOf(item.getField("name")))
                     .build();
             abstractService.invoke(info);
         });

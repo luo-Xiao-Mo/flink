@@ -137,7 +137,7 @@ public class GhBbBbzcTaskService extends AbstractTaskService{
                 "     'password' = 'zyhcdc',\n" +
                 "     'database-name' = 'XE',\n" +
                 "     'schema-name' = 'FAMILY',\n" +
-                "     'table-name' = 'INFO',\n" +
+                "     'table-name' = 'GH_BB_BBZC',\n" +
                 "     'debezium.log.mining.continuous.mine'='true',\n" +
                 "     'debezium.log.mining.strategy'='online_catalog',\n" +
                 "     'debezium.database.tablename.case.insensitive'='false',\n" +
