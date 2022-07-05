@@ -6,7 +6,7 @@ import com.luo.flink.entity.business.Info;
 public class CjCjTbjdService extends AbstractService<CJCJTBJD> {
     @Override
     String insertSql(CJCJTBJD info) {
-        return "insert into CJCL.CJ_CJ_TBJD (ZZID,\n" +
+        return "insert into CJ_CJ_TBJD (ZZID,\n" +
                 "REPORTID,\n" +
                 "BH,\n" +
                 "DWXTM,\n" +
@@ -234,7 +234,7 @@ public class CjCjTbjdService extends AbstractService<CJCJTBJD> {
 
     @Override
     String updateSql(CJCJTBJD info) {
-        return "update CJCL.CJ_CJ_TBJD " +
+        return "update CJ_CJ_TBJD " +
                 "set "
                 + "ZZIDNAM =" + "'" + info.getZzid() + "',"
                 + "REPORTID =" + "'" + info.getReportid() + "',"
@@ -353,7 +353,7 @@ public class CjCjTbjdService extends AbstractService<CJCJTBJD> {
 
     @Override
     String deleteSql(CJCJTBJD info) {
-        return "delete from CJCL.CJ_CJ_TBJD where ZZID =" + info.getZzid();
+        return "delete from CJ_CJ_TBJD where ZZID =" + info.getZzid();
     }
 
     @Override

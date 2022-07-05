@@ -5,7 +5,7 @@ import com.luo.flink.entity.business.GhBbBbzc;
 public class GhBbBbzcService extends AbstractService<GhBbBbzc>{
     @Override
     String insertSql(GhBbBbzc info) {
-        return "insert into CJCL.GH_BB_BBZC (reportid\n" +
+        return "insert into GH_BB_BBZC (reportid\n" +
                 "bh\n" +
                 "dcfffldm\n" +
                 "bbzwqc\n" +
@@ -238,7 +238,7 @@ public class GhBbBbzcService extends AbstractService<GhBbBbzc>{
 
     @Override
     String updateSql(GhBbBbzc info) {
-        return "update CJCL.GH_BB_BBZC " +
+        return "update GH_BB_BBZC " +
                 "set "
                 +"REPORTID = " + "'" + info.getReportid() + "',"
                 +"BH = " + "'" + info.getBh() + "',"
@@ -359,7 +359,7 @@ public class GhBbBbzcService extends AbstractService<GhBbBbzc>{
 
     @Override
     String deleteSql(GhBbBbzc info) {  //
-        return "delete from CJCL.GH_BB_BBZC where ZZID =" + info.getReReportid();
+        return "delete from GH_BB_BBZC where ZZID =" + info.getReReportid();
     }
 
     @Override
