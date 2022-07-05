@@ -17,7 +17,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.luo.flink.main.SourceStream</mainClass>
+                  <mainClass>com.luo.flink.main.SourceSql</mainClass>
                 </transformer>
               </transformers>
               <filters>
