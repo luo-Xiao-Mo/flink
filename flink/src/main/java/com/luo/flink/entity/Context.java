@@ -1,8 +1,6 @@
 package com.luo.flink.entity;
 
 import com.luo.flink.service.AbstractTaskService;
-import com.luo.flink.service.InfoTaskService;
-import com.luo.flink.service.PTaskService;
 import com.luo.flink.util.ReflectUtil;
 import lombok.extern.slf4j.Slf4j;
 
