@@ -10,8 +10,9 @@ import java.sql.Timestamp;
 
 @Builder
 @Data
-public class GHBBBBZC {
+public class GhBbBbzc {
 
+    private String king;
     private String reportid;
     private String bh;
     private String dcfffldm;
@@ -106,6 +107,7 @@ public class GHBBBBZC {
     private String bsdw;
     private String bsdwlxdm;
     private String bsfsdm;
+    private String hzfsdm;
     private String reReportid;
     private String sftb;
     private String tjzydm;

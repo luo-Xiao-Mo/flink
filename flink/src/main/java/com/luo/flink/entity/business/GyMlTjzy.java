@@ -6,8 +6,9 @@ import lombok.Data;
 
 @Builder
 @Data
-public class GYMLTJZY {
+public class GyMlTjzy {
 
+    private String king;
     private String code;
     private String name;
 }
