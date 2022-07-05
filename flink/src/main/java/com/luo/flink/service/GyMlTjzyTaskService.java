@@ -1,16 +1,19 @@
 package com.luo.flink.service;
 
+import com.alibaba.fastjson.JSON;
 import com.luo.flink.entity.business.GyMlTjzy;
 import com.luo.flink.entity.business.Info;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
+import org.apache.flink.types.Row;
+import org.apache.flink.util.CloseableIterator;
 
-public class GyMlTjzyTaskService extends AbstractTaskService{
+public class GyMlTjzyTaskService extends AbstractTaskService {
     @Override
     String getSql() {
         return "CREATE TABLE GY_ML_TJZY (\n" +
-                "     code STRING,\n" +
-                "     name STRING,\n" +
+                "     CODE STRING,\n" +
+                "     NAME STRING,\n" +
                 "     PRIMARY KEY(CODE) NOT ENFORCED\n" +
                 "     ) WITH (\n" +
                 "     'connector' = 'oracle-cdc',\n" +
@@ -37,9 +40,10 @@ public class GyMlTjzyTaskService extends AbstractTaskService{
         AbstractService<GyMlTjzy> abstractService = new GyMlTjzyService();
         tableResult.collect().forEachRemaining(item -> {
             GyMlTjzy info = GyMlTjzy.builder().king(item.getKind().shortString())
-                    .code(String.valueOf(item.getField("code")))
-                    .name(String.valueOf(item.getField("name")))
+                    .code(String.valueOf(item.getField("CODE")))
+                    .name(String.valueOf(item.getField("NAME")))
                     .build();
+            System.out.println(JSON.toJSONString(info));
             abstractService.invoke(info);
         });
     }

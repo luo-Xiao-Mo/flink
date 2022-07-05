@@ -17,8 +17,8 @@ public class DruidUtil {
 
     static {
         try {
-//            Properties pro = ResourceUtil.readPro("druid.properties");
-            Properties pro = ResourceUtil.readPro("local.properties");
+            Properties pro = ResourceUtil.readPro("druid.properties");
+//            Properties pro = ResourceUtil.readPro("local.properties");
             ds = DruidDataSourceFactory.createDataSource(pro);
         } catch (Exception e) {
             log.error(String.format("创建数据库连接池失败:【%s】", e.getMessage()));
