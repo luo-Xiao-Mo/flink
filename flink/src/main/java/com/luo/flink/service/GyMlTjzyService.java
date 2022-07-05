@@ -22,6 +22,6 @@ public class GyMlTjzyService extends AbstractService<GyMlTjzy>{
 
     @Override
     public String getKing(GyMlTjzy info) {
-        return null;
+        return info.getKing();
     }
 }

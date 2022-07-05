@@ -8,9 +8,9 @@ public class GyMlTjzyTaskService extends AbstractTaskService{
     @Override
     String getSql() {
         return "CREATE TABLE GY_ML_TJZY (\n" +
-                "     CODE STRING,\n" +
-                "     NAME STRING,\n" +
-                "     PRIMARY KEY(SID) NOT ENFORCED\n" +
+                "     code STRING,\n" +
+                "     name STRING,\n" +
+                "     PRIMARY KEY(CODE) NOT ENFORCED\n" +
                 "     ) WITH (\n" +
                 "     'connector' = 'oracle-cdc',\n" +
                 "     'hostname' = 'localhost',\n" +
@@ -28,7 +28,7 @@ public class GyMlTjzyTaskService extends AbstractTaskService{
 
     @Override
     TableResult getTableResult(StreamTableEnvironment tableEnv) {
-        return tableEnv.executeSql("select * from info");
+        return tableEnv.executeSql("select * from GY_ML_TJZY");
     }
 
     @Override

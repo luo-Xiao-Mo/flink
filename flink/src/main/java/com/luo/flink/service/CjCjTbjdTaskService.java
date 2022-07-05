@@ -132,7 +132,7 @@ public class CjCjTbjdTaskService  extends AbstractTaskService {
 
     @Override
     String getSql() {
-        return "CREATE TABLE info (\n" +
+        return "CREATE TABLE CJ_CJ_TBJD (\n" +
                 "    zzid            STRINGSID STRING,\n" +
                 "    reportid        STRINGSEX STRING,\n" +
                 "    bh              STRING,\n" +
@@ -264,6 +264,6 @@ public class CjCjTbjdTaskService  extends AbstractTaskService {
 
     @Override
     TableResult getTableResult(StreamTableEnvironment tableEnv) {
-        return tableEnv.executeSql("select * from info");
+        return tableEnv.executeSql("select * from CJ_CJ_TBJD");
     }
 }
