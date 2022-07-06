@@ -1,8 +1,10 @@
-package com.luo.flink.service;
+package com.luo.flink.service.task;
 
 import com.luo.flink.entity.business.CJCJTBJD;
 import com.luo.flink.entity.business.TFillTask;
 import com.luo.flink.filter.TaskFilter;
+import com.luo.flink.service.dao.AbstractService;
+import com.luo.flink.service.dao.FillService;
 import com.luo.flink.util.DruidUtil;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
@@ -270,7 +272,6 @@ public class FillTaskService extends AbstractTaskService {
                     TaskFilter::isMonth, TaskFilter::isYear, TaskFilter::isQuarter));
             if (tFillTask != null) {
                 abstractService.setConnection(DruidUtil.getDmConn());
-                tFillTask.setKing(cjcjtbjd.getKing());
                 abstractService.invoke(tFillTask);
             }
         });

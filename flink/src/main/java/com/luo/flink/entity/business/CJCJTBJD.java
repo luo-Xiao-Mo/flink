@@ -140,6 +140,7 @@ public class CJCJTBJD {
         tFillTask.setCreateTime(new Timestamp(instance.getTimeInMillis()));
         tFillTask.setUpdateTime(new Timestamp(instance.getTimeInMillis()));
         tFillTask.setZzid(zzid);
+        tFillTask.setKing(king);
         return tFillTask;
     }
 }

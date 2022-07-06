@@ -1,7 +1,7 @@
-package com.luo.flink.service;
+package com.luo.flink.service.dao;
 
 import com.luo.flink.entity.business.CJCJTBJD;
-import com.luo.flink.entity.business.Info;
+import com.luo.flink.service.dao.AbstractService;
 
 public class CjCjTbjdService extends AbstractService<CJCJTBJD> {
     @Override

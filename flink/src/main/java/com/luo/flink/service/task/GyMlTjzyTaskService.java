@@ -1,12 +1,11 @@
-package com.luo.flink.service;
+package com.luo.flink.service.task;
 
 import com.alibaba.fastjson.JSON;
 import com.luo.flink.entity.business.GyMlTjzy;
-import com.luo.flink.entity.business.Info;
+import com.luo.flink.service.dao.AbstractService;
+import com.luo.flink.service.dao.GyMlTjzyService;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
-import org.apache.flink.types.Row;
-import org.apache.flink.util.CloseableIterator;
 
 public class GyMlTjzyTaskService extends AbstractTaskService {
     @Override

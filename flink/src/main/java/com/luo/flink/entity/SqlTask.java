@@ -1,6 +1,6 @@
 package com.luo.flink.entity;
 
-import com.luo.flink.service.AbstractTaskService;
+import com.luo.flink.service.task.AbstractTaskService;
 
 public class SqlTask implements Runnable {
 

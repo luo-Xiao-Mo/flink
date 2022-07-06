@@ -1,4 +1,4 @@
-package com.luo.flink.service;
+package com.luo.flink.service.dao;
 
 import com.luo.flink.entity.business.GyMlTjzy;
 

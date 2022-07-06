@@ -2,7 +2,7 @@ package com.luo.flink.filter;
 
 import com.luo.flink.entity.business.CJCJTBJD;
 import com.luo.flink.entity.business.TFillTask;
-import com.luo.flink.service.FillService;
+import com.luo.flink.service.dao.FillService;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -140,10 +140,8 @@ public class TaskFilter {
         else if ("000000000000_893".equals(rwid) && list.contains(bh)
                 && month.equals(bgq))
             return true;
-        else if ("000000000000_886".equals(rwid) && "S204-3".equals(bh)
-                && month.equals(bgq))
-            return true;
-        return false;
+        return "000000000000_886".equals(rwid) && "S204-3".equals(bh)
+                && month.equals(bgq);
     }
 
     /**

@@ -1,6 +1,8 @@
-package com.luo.flink.service;
+package com.luo.flink.service.task;
 
 import com.luo.flink.entity.business.Info;
+import com.luo.flink.service.dao.AbstractService;
+import com.luo.flink.service.dao.InfoService;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 

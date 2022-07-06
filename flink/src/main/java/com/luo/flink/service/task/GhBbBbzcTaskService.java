@@ -1,7 +1,8 @@
-package com.luo.flink.service;
+package com.luo.flink.service.task;
 
 import com.luo.flink.entity.business.GhBbBbzc;
-import com.luo.flink.entity.business.Info;
+import com.luo.flink.service.dao.AbstractService;
+import com.luo.flink.service.dao.GhBbBbzcService;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
@@ -9,7 +10,7 @@ import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Timestamp;
 
-public class GhBbBbzcTaskService extends AbstractTaskService{
+public class GhBbBbzcTaskService extends AbstractTaskService {
     @Override
     String getSql() {
         return "CREATE TABLE GH_BB_BBZC (\n" +
@@ -169,9 +170,9 @@ public class GhBbBbzcTaskService extends AbstractTaskService{
                     .dcnr(String.valueOf(item.getField("DCNR")))
                     .dcpddm(String.valueOf(item.getField("DCPDDM")))
                     .dcpdms(String.valueOf(item.getField("DCPDMS")))
-                    .qysj((Timestamp)(item.getField("QYSJ")))
-                    .tysj((Timestamp)(item.getField("TYSJ")))
-                    .yxqz((Timestamp)(item.getField("YXQZ")))
+                    .qysj((Timestamp) (item.getField("QYSJ")))
+                    .tysj((Timestamp) (item.getField("TYSJ")))
+                    .yxqz((Timestamp) (item.getField("YXQZ")))
                     .bbsx((Float) item.getField("BBSX"))
                     .txsj((Float) item.getField("TXSJ"))
                     .txsjms(String.valueOf(item.getField("TXSJMS")))

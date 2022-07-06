@@ -1,5 +1,6 @@
-package com.luo.flink.service;
+package com.luo.flink.service.dao;
 
+import com.luo.flink.service.King;
 import com.luo.flink.type.OperateType;
 import com.luo.flink.util.DruidUtil;
 import lombok.extern.slf4j.Slf4j;

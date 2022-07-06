@@ -1,6 +1,6 @@
 package com.luo.flink.entity.business;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +12,7 @@ import java.util.Map;
 @Builder
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class TFillTask {
     private String king;
     private String areaCode;
@@ -34,7 +35,6 @@ public class TFillTask {
     //当前code编码
     private String code;
     private String zzid;
-
 
     public TFillTask assignment(Map<String, String> m1,
                                 Map<String, Map<String, String>> m2) {

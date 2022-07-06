@@ -1,4 +1,4 @@
-package com.luo.flink.service;
+package com.luo.flink.service.task;
 
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
