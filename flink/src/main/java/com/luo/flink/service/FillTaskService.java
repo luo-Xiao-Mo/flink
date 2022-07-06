@@ -151,7 +151,6 @@ public class FillTaskService extends AbstractTaskService {
     @Override
     void handlerTableResult(TableResult tableResult) {
         AbstractService<TFillTask> abstractService = new FillService();
-        abstractService.setConnection(DruidUtil.getDmConn());
         tableResult.collect().forEachRemaining(item -> {
             CJCJTBJD cjcjtbjd = CJCJTBJD.builder().king(item.getKind().shortString())
                     .zzid(String.valueOf(item.getField("ZZID")))
@@ -270,6 +269,7 @@ public class FillTaskService extends AbstractTaskService {
             TFillTask tFillTask = TaskFilter.decide(cjcjtbjd, Arrays.asList(
                     TaskFilter::isMonth, TaskFilter::isYear, TaskFilter::isQuarter));
             if (tFillTask != null) {
+                abstractService.setConnection(DruidUtil.getDmConn());
                 tFillTask.setKing(cjcjtbjd.getKing());
                 abstractService.invoke(tFillTask);
             }

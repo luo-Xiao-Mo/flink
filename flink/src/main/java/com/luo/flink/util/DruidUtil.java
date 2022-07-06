@@ -20,11 +20,12 @@ public class DruidUtil {
 
     static {
         try {
-            Properties pro = ResourceUtil.readPro("druid.properties");
+            //初始化到中间oracle的连接
+            Properties pro = ResourceUtil.readPro("oracleSink.properties");
             ds = DruidDataSourceFactory.createDataSource(pro);
-
-            Properties p2 = ResourceUtil.readPro("dmSink.properties");
-            dm = DruidDataSourceFactory.createDataSource(p2);
+            //初始化到达梦数据库的连接信息
+//            Properties p2 = ResourceUtil.readPro("dmSink.properties");
+//            dm = DruidDataSourceFactory.createDataSource(p2);
 
         } catch (Exception e) {
             log.error(String.format("创建数据库连接池失败:【%s】", e.getMessage()));

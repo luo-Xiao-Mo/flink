@@ -90,17 +90,50 @@ public class FillService extends AbstractService<TFillTask> {
 
     @Override
     String insertSql(TFillTask info) {
-        return null;
+        return "insert into T_FILL_TASK (AREA_CODE, TJZYDM, BH,BGQB,BGQ,DWXTM,TYSHXYDM,ORGNAME," +
+                "TBJZRQ,SBQK,SBSJ,CREATE_TIME,UPDATE_TIME,BBZWQC,ZZID,TBKSSJ) values ("
+                + "'" + info.getAreaCode() + "',"
+                + "'" + info.getTjzydm() + "',"
+                + "'" + info.getBh() + ",'"
+                + "'" + info.getBgqb() + ",'"
+                + "'" + info.getBgq() + ",'"
+                + "'" + info.getDwxtm() + ",'"
+                + "'" + info.getTyshxydm() + ",'"
+                + "'" + info.getOrgname() + ",'"
+                + "'" + info.getTbjzrq() + ",'"
+                + "'" + info.getSbqk() + ",'"
+                + "'" + info.getSbsj() + ",'"
+                + "'" + info.getCreateTime() + ",'"
+                + "'" + info.getUpdateTime() + ",'"
+                + "'" + info.getBbzwqc() + ",'"
+                + "'" + info.getZzid() + ",'"
+                + "'" + info.getTbkssj() + "'"
+                + ")";
     }
 
     @Override
     String updateSql(TFillTask info) {
-        return null;
+        return "update T_FILL_TASK set "
+                + "AREA_CODE =" + "'" + info.getAreaCode() + "',"
+                + "TJZYDM =" + "'" + info.getTjzydm() + "',"
+                + "BH =" + "'" + info.getBh() + "',"
+                + "BGQB =" + "'" + info.getBgqb() + "',"
+                + "DWXTM =" + "'" + info.getDwxtm() + "',"
+                + "TYSHXYDM =" + "'" + info.getTyshxydm() + "',"
+                + "ORGNAME =" + "'" + info.getOrgname() + "',"
+                + "TBJZRQ =" + "'" + info.getTbjzrq() + "',"
+                + "SBQK =" + "'" + info.getSbqk() + "',"
+                + "SBSJ =" + "'" + info.getSbsj() + "',"
+                + "UPDATE_TIME =" + "'" + info.getUpdateTime() + "',"
+                + "BBZWQC =" + "'" + info.getBbzwqc() + "',"
+                + "TBKSSJ =" + "'" + info.getTbkssj() + "'"
+                + " where REPORTID=" + info.getZzid();
+
     }
 
     @Override
     String deleteSql(TFillTask info) {
-        return null;
+        return "delete from T_FILL_TASK where zzid=" + info.getZzid();
     }
 
     @Override

@@ -30,8 +30,10 @@ public class TFillTask {
     private String bbzwqc;
     //当前报表的id
     private String reportId;
+    private String tbkssj;
     //当前code编码
     private String code;
+    private String zzid;
 
 
     public TFillTask assignment(Map<String, String> m1,

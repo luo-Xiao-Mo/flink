@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 @Data
 @Builder
@@ -125,6 +126,20 @@ public class CJCJTBJD {
 
 
     public TFillTask getTask() {
-        return new TFillTask();
+        Calendar instance = Calendar.getInstance();
+        TFillTask tFillTask = new TFillTask();
+        tFillTask.setAreaCode(gljg.substring(0, 6));
+        tFillTask.setBh(bh);
+        tFillTask.setBgqb(bgq.substring(bgq.length() - 2));
+        tFillTask.setBgq(bgq.substring(0, 6));
+        tFillTask.setDwxtm(dwxtm);
+//        tFillTask.setOrgname();
+//        tFillTask.setTbjzrq();
+//        tFillTask.setSbqk();
+//        tFillTask.setSbsj();
+        tFillTask.setCreateTime(new Timestamp(instance.getTimeInMillis()));
+        tFillTask.setUpdateTime(new Timestamp(instance.getTimeInMillis()));
+        tFillTask.setZzid(zzid);
+        return tFillTask;
     }
 }
