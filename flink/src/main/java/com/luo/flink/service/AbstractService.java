@@ -35,7 +35,9 @@ public abstract class AbstractService<T> implements King<T> {
         }
         if (StringUtils.isEmpty(sql)) return;
         try {
-            connection = DruidUtil.getConn();
+            if (connection == null) {
+                connection = DruidUtil.getConn();
+            }
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.execute();
         } catch (Exception e) {
@@ -43,6 +45,10 @@ public abstract class AbstractService<T> implements King<T> {
         } finally {
             DruidUtil.close(connection, preparedStatement);
         }
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
     }
 
     abstract String insertSql(T info);

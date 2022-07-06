@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
@@ -15,11 +16,16 @@ public class DruidUtil {
 
     private static DataSource ds;
 
+    private static DataSource dm;
+
     static {
         try {
             Properties pro = ResourceUtil.readPro("druid.properties");
-//            Properties pro = ResourceUtil.readPro("local.properties");
             ds = DruidDataSourceFactory.createDataSource(pro);
+
+            Properties p2 = ResourceUtil.readPro("dmSink.properties");
+            dm = DruidDataSourceFactory.createDataSource(p2);
+
         } catch (Exception e) {
             log.error(String.format("创建数据库连接池失败:【%s】", e.getMessage()));
         }
@@ -30,6 +36,19 @@ public class DruidUtil {
      */
     public static Connection getConn() throws Exception {
         return ds.getConnection();
+    }
+
+    /**
+     * 获取连接 获取达梦数据库的连接
+     */
+    public static Connection getDmConn() {
+        Connection connection = null;
+        try {
+            connection = dm.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
 
     /**

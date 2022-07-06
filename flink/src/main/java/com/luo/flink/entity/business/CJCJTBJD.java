@@ -123,4 +123,8 @@ public class CJCJTBJD {
     private Timestamp jgyskssjTjjb05;
     private Timestamp jgyskssjTjjb06;
 
+
+    public TFillTask getTask() {
+        return new TFillTask();
+    }
 }

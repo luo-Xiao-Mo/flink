@@ -16,4 +16,9 @@ public class OperateType {
     public final static String UPDATE_ = "+U";
     //sql删除
     public final static String DELETE_ = "-D";
+
+    //缓存代码表数据
+    public final static String CACHE_CODE = "cache_code";
+    //缓存report表数据
+    public final static String CACHE_BB = "cache_bb";
 }
