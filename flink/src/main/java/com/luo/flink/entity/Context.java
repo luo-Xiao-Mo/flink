@@ -25,8 +25,10 @@ public class Context {
     static {
 //        addTaskService();
         readTask();
-        executorService = new ThreadPoolExecutor(serviceList.size(), serviceList.size(),
-                0L, TimeUnit.MICROSECONDS, new LinkedBlockingQueue<>());
+        if (serviceList != null && !serviceList.isEmpty()) {
+            executorService = new ThreadPoolExecutor(serviceList.size(), serviceList.size(),
+                    0L, TimeUnit.MICROSECONDS, new LinkedBlockingQueue<>());
+        }
     }
 
     public void exec() {
@@ -35,8 +37,6 @@ public class Context {
                 SqlTask sqlTask = new SqlTask(item);
                 executorService.submit(sqlTask);
             });
-        } else {
-            executorService.shutdownNow();
         }
     }
 
