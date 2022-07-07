@@ -6,9 +6,8 @@ import com.luo.flink.service.dao.CjCjTbjdService;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
-import java.sql.Timestamp;
 
-public class CjCjTbjdTaskService  extends AbstractTaskService {
+public class CjCjTbjdTaskService extends AbstractTaskService {
     @Override
     void handlerTableResult(TableResult tableResult) {
         AbstractService<CJCJTBJD> abstractService = new CjCjTbjdService();
@@ -21,11 +20,11 @@ public class CjCjTbjdTaskService  extends AbstractTaskService {
                     .dwmc(String.valueOf(item.getField("DWMC")))
                     .bgq(String.valueOf(item.getField("BGQ")))
                     .yhid(String.valueOf(item.getField("YHID")))
-                    .tbkssj(getTimestamp( item,"TBKSSJ"))
-                    .tbjzsj(getTimestamp( item,"TBJZSJ"))
-                    .txkssj(getTimestamp( item,"TXKSSJ"))
-                    .cbjzsj(getTimestamp( item,"CBJZSJ"))
-                    .tbsj(getTimestamp( item,"TBSJ"))
+                    .tbkssj(getTimestamp(item, "TBKSSJ"))
+                    .tbjzsj(getTimestamp(item, "TBJZSJ"))
+                    .txkssj(getTimestamp(item, "TXKSSJ"))
+                    .cbjzsj(getTimestamp(item, "CBJZSJ"))
+                    .tbsj(getTimestamp(item, "TBSJ"))
                     .zzjgdm(String.valueOf(item.getField("ZZJGDM")))
                     .gljg(String.valueOf(item.getField("GLJG")))
                     .sjztbm(String.valueOf(item.getField("SJZTBM")))
@@ -37,10 +36,10 @@ public class CjCjTbjdTaskService  extends AbstractTaskService {
                     .bbbz(String.valueOf(item.getField("BBBZ")))
                     .xmid(String.valueOf(item.getField("XMID")))
                     .zgysr(String.valueOf(item.getField("ZGYSR")))
-                    .zgyssj(getTimestamp( item,"ZGYSSJ"))
+                    .zgyssj(getTimestamp(item, "ZGYSSJ"))
                     .xmmc(String.valueOf(item.getField("XMMC")))
                     .zgyszt(String.valueOf(item.getField("ZGYSZT")))
-                    .qyckjzsj(getTimestamp( item,"QYCKJZSJ"))
+                    .qyckjzsj(getTimestamp(item, "QYCKJZSJ"))
                     .xyfstzbz(String.valueOf(item.getField("XYFSTZBZ")))
                     .sffstzbz(String.valueOf(item.getField("SFFSTZBZ")))
                     .bxyfstzyy(String.valueOf(item.getField("BXYFSTZYY")))
@@ -51,62 +50,62 @@ public class CjCjTbjdTaskService  extends AbstractTaskService {
                     .qyzzbbzt(String.valueOf(item.getField("QYZZBBZT")))
                     .qyzzshzt(String.valueOf(item.getField("QYZZSHZT")))
                     .dqshzt(String.valueOf(item.getField("DQSHZT")))
-                    .qyzztjsj(getTimestamp( item,"QYZZTJSJ"))
+                    .qyzztjsj(getTimestamp(item, "QYZZTJSJ"))
                     .syshzt(String.valueOf(item.getField("SYSHZT")))
                     .xtshr(String.valueOf(item.getField("XTSHR")))
-                    .xtshsj(getTimestamp( item,"XTSHSJ"))
+                    .xtshsj(getTimestamp(item, "XTSHSJ"))
                     .tbrmc(String.valueOf(item.getField("TBRMC")))
                     .xtshrmc(String.valueOf(item.getField("XTSHRMC")))
                     .zgysrmc(String.valueOf(item.getField("ZGYSRMC")))
                     .tzstjjg(String.valueOf(item.getField("TZSTJJG")))
                     .sfqmtj(String.valueOf(item.getField("SFQMTJ")))
                     .bfkzbz(String.valueOf(item.getField("BFKZBZ")))
-                    .inserttime(getTimestamp( item,"INSERTTIME"))
+                    .inserttime(getTimestamp(item, "INSERTTIME"))
                     .commitflag(String.valueOf(item.getField("COMMITFLAG")))
                     .qytbr(String.valueOf(item.getField("QYTBR")))
-                    .committime(getTimestamp( item,"COMMITTIME"))
+                    .committime(getTimestamp(item, "COMMITTIME"))
                     .qyyhid(String.valueOf(item.getField("QYYHID")))
                     .jgysrTjjb01(String.valueOf(item.getField("JGYSR_TJJB01")))
                     .jgysrmcTjjb01(String.valueOf(item.getField("JGYSRMC_TJJB01")))
-                    .jgyssjTjjb01(getTimestamp( item,"JGYSSJ_TJJB01"))
+                    .jgyssjTjjb01(getTimestamp(item, "JGYSSJ_TJJB01"))
                     .jgysztTjjb01(String.valueOf(item.getField("JGYSZT_TJJB01")))
                     .jgsyshztTjjb01(String.valueOf(item.getField("JGSYSHZT_TJJB01")))
-                    .jgsyshsjTjjb01(getTimestamp( item,"JGSYSHSJ_TJJB01"))
+                    .jgsyshsjTjjb01(getTimestamp(item, "JGSYSHSJ_TJJB01"))
                     .jgysrTjjb02(String.valueOf(item.getField("JGYSR_TJJB02")))
                     .jgysrmcTjjb02(String.valueOf(item.getField("JGYSRMC_TJJB02")))
-                    .jgyssjTjjb02(getTimestamp( item,"JGYSSJ_TJJB02"))
+                    .jgyssjTjjb02(getTimestamp(item, "JGYSSJ_TJJB02"))
                     .jgysztTjjb02(String.valueOf(item.getField("JGYSZT_TJJB02")))
                     .jgsyshztTjjb02(String.valueOf(item.getField("JGSYSHZT_TJJB02")))
-                    .jgsyshsjTjjb02(getTimestamp( item,"JGSYSHSJ_TJJB02"))
+                    .jgsyshsjTjjb02(getTimestamp(item, "JGSYSHSJ_TJJB02"))
                     .jgysrTjjb03(String.valueOf(item.getField("JGYSR_TJJB03")))
                     .jgysrmcTjjb03(String.valueOf(item.getField("JGYSRMC_TJJB03")))
-                    .jgyssjTjjb03(getTimestamp( item,"JGYSSJ_TJJB03"))
+                    .jgyssjTjjb03(getTimestamp(item, "JGYSSJ_TJJB03"))
                     .jgysztTjjb03(String.valueOf(item.getField("JGYSZT_TJJB03")))
                     .jgsyshztTjjb03(String.valueOf(item.getField("JGSYSHZT_TJJB03")))
-                    .jgsyshsjTjjb03(getTimestamp( item,"JGSYSHSJ_TJJB03"))
+                    .jgsyshsjTjjb03(getTimestamp(item, "JGSYSHSJ_TJJB03"))
                     .jgysrTjjb04(String.valueOf(item.getField("JGYSR_TJJB04")))
                     .jgysrmcTjjb04(String.valueOf(item.getField("JGYSRMC_TJJB04")))
-                    .jgyssjTjjb04(getTimestamp( item,"JGYSSJ_TJJB04"))
+                    .jgyssjTjjb04(getTimestamp(item, "JGYSSJ_TJJB04"))
                     .jgysztTjjb04(String.valueOf(item.getField("JGYSZT_TJJB04")))
                     .jgsyshztTjjb04(String.valueOf(item.getField("JGSYSHZT_TJJB04")))
-                    .jgsyshsjTjjb04(getTimestamp( item,"JGSYSHSJ_TJJB04"))
+                    .jgsyshsjTjjb04(getTimestamp(item, "JGSYSHSJ_TJJB04"))
                     .jgysrTjjb05(String.valueOf(item.getField("JGYSR_TJJB05")))
                     .jgysrmcTjjb05(String.valueOf(item.getField("JGYSRMC_TJJB05")))
-                    .jgyssjTjjb05(getTimestamp( item,"JGYSSJ_TJJB05"))
+                    .jgyssjTjjb05(getTimestamp(item, "JGYSSJ_TJJB05"))
                     .jgysztTjjb05(String.valueOf(item.getField("JGYSZT_TJJB05")))
                     .jgsyshztTjjb05(String.valueOf(item.getField("JGSYSHZT_TJJB05")))
-                    .jgsyshsjTjjb05(getTimestamp( item,"JGSYSHSJ_TJJB05"))
+                    .jgsyshsjTjjb05(getTimestamp(item, "JGSYSHSJ_TJJB05"))
                     .jgysrTjjb06(String.valueOf(item.getField("JGYSR_TJJB06")))
                     .jgysrmcTjjb06(String.valueOf(item.getField("JGYSRMC_TJJB06")))
-                    .jgyssjTjjb06(getTimestamp( item,"JGYSSJ_TJJB06"))
+                    .jgyssjTjjb06(getTimestamp(item, "JGYSSJ_TJJB06"))
                     .jgysztTjjb06(String.valueOf(item.getField("JGYSZT_TJJB06")))
                     .jgsyshztTjjb06(String.valueOf(item.getField("JGSYSHZT_TJJB06")))
-                    .jgsyshsjTjjb06(getTimestamp( item,"JGSYSHSJ_TJJB06"))
+                    .jgsyshsjTjjb06(getTimestamp(item, "JGSYSHSJ_TJJB06"))
                     .clientip(String.valueOf(item.getField("CLIENTIP")))
                     .backTjjgjbdm(String.valueOf(item.getField("BACK_TJJGJBDM")))
-                    .backSbjzsj(getTimestamp( item,"BACK_SBJZSJ"))
+                    .backSbjzsj(getTimestamp(item, "BACK_SBJZSJ"))
                     .backFlag(String.valueOf(item.getField("BACK_FLAG")))
-                    .firstTjsj(getTimestamp( item,"FIRST_TJSJ"))
+                    .firstTjsj(getTimestamp(item, "FIRST_TJSJ"))
                     .wlryydm(String.valueOf(item.getField("WLRYYDM")))
                     .wlryysm(String.valueOf(item.getField("WLRYYSM")))
                     .sbTjjgdm(String.valueOf(item.getField("SB_TJJGDM")))
@@ -119,13 +118,13 @@ public class CjCjTbjdTaskService  extends AbstractTaskService {
                     .jgysyjTjjb05(String.valueOf(item.getField("JGYSYJ_TJJB05")))
                     .jgysyjTjjb06(String.valueOf(item.getField("JGYSYJ_TJJB06")))
                     .gsfrdm(String.valueOf(item.getField("GSFRDM")))
-                    .xqtbkssj(getTimestamp( item,"XQTBKSSJ"))
-                    .jgyskssjTjjb01(getTimestamp( item,"JGYSKSSJ_TJJB01"))
-                    .jgyskssjTjjb02(getTimestamp( item,"JGYSKSSJ_TJJB02"))
-                    .jgyskssjTjjb03(getTimestamp( item,"JGYSKSSJ_TJJB03"))
-                    .jgyskssjTjjb04(getTimestamp( item,"JGYSKSSJ_TJJB04"))
-                    .jgyskssjTjjb05(getTimestamp( item,"JGYSKSSJ_TJJB05"))
-                    .jgyskssjTjjb06(getTimestamp( item,"JGYSKSSJ_TJJB06"))
+                    .xqtbkssj(getTimestamp(item, "XQTBKSSJ"))
+                    .jgyskssjTjjb01(getTimestamp(item, "JGYSKSSJ_TJJB01"))
+                    .jgyskssjTjjb02(getTimestamp(item, "JGYSKSSJ_TJJB02"))
+                    .jgyskssjTjjb03(getTimestamp(item, "JGYSKSSJ_TJJB03"))
+                    .jgyskssjTjjb04(getTimestamp(item, "JGYSKSSJ_TJJB04"))
+                    .jgyskssjTjjb05(getTimestamp(item, "JGYSKSSJ_TJJB05"))
+                    .jgyskssjTjjb06(getTimestamp(item, "JGYSKSSJ_TJJB06"))
                     .build();
             abstractService.invoke(info);
         });
@@ -136,7 +135,7 @@ public class CjCjTbjdTaskService  extends AbstractTaskService {
         return "CREATE TABLE CJ_CJ_TBJD (\n" +
                 "    ZZID            STRING,\n" +
                 "    REPORTID        STRING,\n" +
-               "    BH              STRING,\n" +
+                "    BH              STRING,\n" +
                 "    DWXTM           STRING,\n" +
                 "    DWMC            STRING,\n" +
                 "    BGQ             STRING,\n" +
@@ -250,7 +249,7 @@ public class CjCjTbjdTaskService  extends AbstractTaskService {
 
                 "     ) WITH (\n" +
                 "     'connector' = 'oracle-cdc',\n" +
-                "     'hostname' = '118.190.206.185',\n" +
+                "     'hostname' = 'localhost',\n" +
                 "     'port' = '1521',\n" +
                 "     'username' = 'family',\n" +
                 "     'password' = 'zyhcdc',\n" +

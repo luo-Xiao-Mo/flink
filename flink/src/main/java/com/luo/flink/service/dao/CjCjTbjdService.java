@@ -1,12 +1,12 @@
 package com.luo.flink.service.dao;
 
+import com.alibaba.fastjson.JSON;
 import com.luo.flink.entity.business.CJCJTBJD;
-import com.luo.flink.service.dao.AbstractService;
 
 public class CjCjTbjdService extends AbstractService<CJCJTBJD> {
     @Override
     String insertSql(CJCJTBJD info) {
-        return "insert into CJ_CJ_TBJD_TARGET (ZZID,\n" +
+        return "insert into CJ_CJ_TBJD (ZZID,\n" +
                 "REPORTID,\n" +
                 "BH,\n" +
                 "DWXTM,\n" +
