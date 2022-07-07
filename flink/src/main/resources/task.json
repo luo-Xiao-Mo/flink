@@ -1,5 +1,5 @@
 {
   "task": [
-    "com.luo.flink.service.task.CjCjTbjdTaskService"
+    "com.luo.flink.service.task.InfoTaskService"
   ]
 }
