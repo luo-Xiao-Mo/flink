@@ -23,23 +23,27 @@ public class Context {
     private static ExecutorService executorService;
 
     static {
-//        addTaskService();
         readTask();
+        //只有任务不为空,才会初始化线程池执行任务
         if (serviceList != null && !serviceList.isEmpty()) {
             executorService = new ThreadPoolExecutor(serviceList.size(), serviceList.size(),
                     0L, TimeUnit.MICROSECONDS, new LinkedBlockingQueue<>());
         }
     }
 
+    /**
+     * 任务执行方法
+     * 默认一个线程一个任务
+     */
     public void exec() {
         if (serviceList != null && !serviceList.isEmpty()) {
-            serviceList.forEach(item -> {
-                SqlTask sqlTask = new SqlTask(item);
-                executorService.submit(sqlTask);
-            });
+            serviceList.forEach(item -> executorService.submit(new SqlTask(item)));
         }
     }
 
+    /**
+     * 反射读取所有任务类的子类
+     */
     private static void addTaskService() {
         Set<Class> classes = ReflectUtil.getSub(AbstractTaskService.class);
         if (classes != null && !classes.isEmpty()) {
@@ -53,12 +57,18 @@ public class Context {
         }
     }
 
+    /**
+     * 配置文件读取当前的执行任务类初始化
+     */
     private static void readTask() {
         JSONArray jsonArray = ResourceUtil.readJson();
         if (jsonArray != null) {
             for (Object item : jsonArray) {
                 try {
                     Class<?> aClass = Class.forName(item.toString());
+                    if (!aClass.isInstance(AbstractTaskService.class)) {
+                        throw new RuntimeException("当前配置信息不是任务类类型");
+                    }
                     serviceList.add((AbstractTaskService) aClass.newInstance());
                 } catch (Exception e) {
                     log.error(String.format("初始化任务类异常:【%s】", e.getMessage()));

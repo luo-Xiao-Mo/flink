@@ -1,6 +1,5 @@
 package com.luo.flink.service.task;
 
-import com.alibaba.fastjson.JSON;
 import com.luo.flink.entity.business.Info;
 import com.luo.flink.service.dao.AbstractService;
 import com.luo.flink.service.dao.InfoService;
@@ -28,6 +27,6 @@ public class InfoTaskService extends AbstractTaskService {
 
     @Override
     TableResult getTableResult(StreamTableEnvironment tableEnv) {
-        return tableEnv.executeSql("select * from " + freeTemplate.getFreeName());
+        return defaultTableResult(tableEnv);
     }
 }

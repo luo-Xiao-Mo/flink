@@ -8,50 +8,43 @@ import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import org.apache.flink.types.Row;
 
 import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 public abstract class AbstractTaskService {
 
-    FreeTemplate freeTemplate = FreeTemplate.getInstance();
+    protected FreeTemplate freeTemplate = FreeTemplate.getInstance();
 
 
     public void exec() {
+        //创建flink流环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        //设置并行度为1
         env.setParallelism(1);
+        //创建表环境
         StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);
+        //配置表环境信息
         Configuration configuration = tableEnv.getConfig().getConfiguration();
         configuration.setString("table.exec.sink.not-null-enforcer", "drop");
+        //执行创建flink表sql
         tableEnv.executeSql(getSql());
+        //读取内存表sql信息
         handlerTableResult(getTableResult(tableEnv));
     }
 
     abstract String getSql();
+
 
     abstract TableResult getTableResult(StreamTableEnvironment tableEnv);
 
 
     abstract void handlerTableResult(TableResult tableResult);
 
-    static Timestamp getTimestamp(Row row, String key) {
-        return null;
-//        ZoneId zoneIdShanghai = ZoneId.of("Asia/Shanghai");
-//        Object o = row.getField(key);
-//        if (o == null) return null;
-//        String dateString = String.valueOf(o);
-//        long value = string2long(dateString, zoneIdShanghai);
-//        return new Timestamp(value);
+
+    TableResult defaultTableResult(StreamTableEnvironment tableEnv) {
+        return tableEnv.executeSql("select * from " + freeTemplate.getFreeName());
     }
 
-    private static long string2long(String dateString, ZoneId zoneId) {
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-        formatter.withZone(zoneId);
-        LocalDateTime localDateTime = LocalDateTime.parse(dateString, formatter);
-        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, zoneId);
-        return Instant.from(zonedDateTime).toEpochMilli();
+    static Timestamp getTimestamp(Row row, String key) {
+        return null;
     }
 }
 
