@@ -104,12 +104,27 @@ public class FreeTemplate {
                 TemplateEntity.class);
         Map<String, Object> dataMap = templateEntity.entityToMap();
         dataMap.put("properties", Joiner.on(",").join(templateEntity.getProperties()) + ",");
+        String url = properties.getProperty("url");
         dataMap.put("connector", properties.getProperty("connector"));
-        dataMap.put("hostName", properties.getProperty("hostName"));
-        dataMap.put("port", properties.getProperty("port"));
+        dataMap.put("hostName", hostName(url));
+        dataMap.put("port", host(url));
         dataMap.put("userName", properties.getProperty("username"));
         dataMap.put("password", properties.getProperty("password"));
         return dataMap;
+    }
+
+    /**
+     * 硬代码获取当前的主机名称
+     */
+    private static String hostName(String url) {
+        return url.substring(url.indexOf("@") + 1, url.lastIndexOf(":"));
+    }
+
+    /**
+     * 硬代码获取当前的端口号
+     */
+    private static String host(String url) {
+        return url.substring(url.lastIndexOf(":") + 1, url.lastIndexOf("/"));
     }
 }
 
