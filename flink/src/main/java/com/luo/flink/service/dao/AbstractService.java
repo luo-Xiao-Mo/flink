@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 
 
 @Slf4j
@@ -18,7 +19,6 @@ public abstract class AbstractService<T> implements King<T> {
 
     private Connection connection;
 
-    private int i ;
     public void invoke(T info) {
         String kind = getKing(info);
         String sql = null;
@@ -40,15 +40,21 @@ public abstract class AbstractService<T> implements King<T> {
         try {
             connection = DruidUtil.getConn();
             preparedStatement = connection.prepareStatement(sql);
-            i++;
             preparedStatement.execute();
         } catch (Exception e) {
-            //log.error(e.getMessage());
-            System.out.println(i);
-            throw new RuntimeException(e.getMessage());
+            log.error(e.getMessage());
         } finally {
-           // DruidUtil.close(connection, preparedStatement);
+            DruidUtil.close(connection, preparedStatement);
         }
+    }
+
+    String ifNotNull(Object obj){
+        if (obj instanceof String){
+            return "null".equals((String)obj)? "null" : "'"+ obj +"'";
+        }else if(obj instanceof Timestamp){
+            return  obj == null ? "null" : "'"+ obj +"'" ;
+        }
+        return null;
     }
 
     public void setConnection(Connection connection) {

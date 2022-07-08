@@ -235,20 +235,12 @@ public class CjCjTbjdService extends AbstractService<CJCJTBJD> {
                  + ifNotNull(info.getJgyskssjTjjb06())  + ")";
     }
 
-    String ifNotNull(Object obj){
-        if (obj instanceof String){
-            return "null".equals((String)obj)? "null" : "'"+ obj +"'";
-        }else if(obj instanceof Timestamp){
-            return  (long)obj == 0 ? "null" : "'"+ obj +"'" ;
-        }
-        return null;
-    }
 
     @Override
     String updateSql(CJCJTBJD info) {
         return "update CJ_CJ_TBJD_TARGET " +
                 "set "
-                + "ZZIDNAM ="  + info.getZzid() + ","
+                + "ZZID ="  + info.getZzid() + ","
                 + "REPORTID ="  + info.getReportid() + ","
                 + "BH ="  + info.getBh() + ","
                 + "DWXTM ="  + info.getDwxtm() + ","

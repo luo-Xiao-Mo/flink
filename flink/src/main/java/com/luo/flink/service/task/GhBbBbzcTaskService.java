@@ -1,7 +1,9 @@
 package com.luo.flink.service.task;
 
+import com.luo.flink.entity.business.CJCJTBJD;
 import com.luo.flink.entity.business.GhBbBbzc;
 import com.luo.flink.service.dao.AbstractService;
+import com.luo.flink.service.dao.CjCjTbjdService;
 import com.luo.flink.service.dao.GhBbBbzcService;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
@@ -14,135 +16,149 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
     @Override
     String getSql() {
         return "CREATE TABLE GH_BB_BBZC (\n" +
-                "reportid  STRING   ,\n" +
-                "bh  STRING   ,\n" +
-                "dcfffldm  STRING   ,\n" +
-                "bbzwqc  STRING   ,\n" +
-                "bbywqc  STRING   ,\n" +
-                "bbzwjc  STRING   ,\n" +
-                "bb  STRING   ,\n" +
-                "bblx  STRING   ,\n" +
-                "zyfldm  STRING   ,\n" +
-                "zgzy  STRING   ,\n" +
-                "tbsm  STRING   ,\n" +
-                "wh  STRING   ,\n" +
-                "dcnr  STRING   ,\n" +
-                "dcpddm  STRING   ,\n" +
-                "dcpdms  STRING   ,\n" +
-                "qysj  TIMESTAMP(6)   ,\n" +
-                "tysj  TIMESTAMP(6)   ,\n" +
-                "yxqz  DATE   ,\n" +
-                "bbsx  FLOAT   ,\n" +
-                "txsj  FLOAT   ,\n" +
-                "txsjms  STRING   ,\n" +
-                "bbztdm  STRING   ,\n" +
-                "bbjb  STRING   ,\n" +
-                "spr  STRING   ,\n" +
-                "spjg  STRING   ,\n" +
-                "pzhjg  STRING   ,\n" +
-                "pzwh  STRING   ,\n" +
-                "bajg  STRING   ,\n" +
-                "bawh  STRING   ,\n" +
-                "zbjg  STRING   ,\n" +
-                "gljg  STRING   ,\n" +
-                "gljgfzr  STRING   ,\n" +
-                "wlbmc  STRING   ,\n" +
-                "bz  STRING   ,\n" +
-                "bzh  STRING   ,\n" +
-                "cjr  STRING   ,\n" +
-                "cjsj  TIMESTAMP(6)   ,\n" +
-                "xgr  STRING   ,\n" +
-                "xgsj  TIMESTAMP(6)   ,\n" +
-                "tjspsj  TIMESTAMP(6)   ,\n" +
-                "sfyxjzlssj  STRING   ,\n" +
-                "bbbgsm  STRING   ,\n" +
-                "qzbh  STRING   ,\n" +
-                "sybbid  STRING   ,\n" +
-                "sqbid  STRING   ,\n" +
-                "tqbh  STRING   ,\n" +
-                "lsbz  STRING   ,\n" +
-                "tjdcdxjblxdm  STRING   ,\n" +
-                "dclylx  STRING   ,\n" +
-                "zbs  BINARY   ,\n" +
-                "bywj  BINARY   ,\n" +
-                "bdcml  STRING   ,\n" +
-                "hzgxyj  BINARY   ,\n" +
-                "hzbsjys  BINARY   ,\n" +
-                "bbqjbl  BINARY   ,\n" +
-                "ms  STRING   ,\n" +
-                "spyj  STRING   ,\n" +
-                "bfgbbid  STRING   ,\n" +
-                "scbz  STRING   ,\n" +
-                "sfkwhtbfw  STRING   ,\n" +
-                "hzsjls  INT   ,\n" +
-                "gzbbbm  STRING   ,\n" +
-                "gzmlbm  STRING   ,\n" +
-                "sjylx  STRING   ,\n" +
-                "cjbm  STRING   ,\n" +
-                "bbcjsj  TIMESTAMP(6)   ,\n" +
-                "xdr  STRING   ,\n" +
-                "xdsj  TIMESTAMP(6)   ,\n" +
-                "xdsm  STRING   ,\n" +
-                "bbsm  STRING   ,\n" +
-                "tbfw  STRING   ,\n" +
-                "bbqbdm  STRING   ,\n" +
-                "ssrw  STRING   ,\n" +
-                "tbsjsm  STRING   ,\n" +
-                "bbsyhy  STRING   ,\n" +
-                "hzsyjgdm  STRING   ,\n" +
-                "sjbs  BINARY   ,\n" +
-                "bydx  BINARY   ,\n" +
-                "qsfs  STRING   ,\n" +
-                "htmlby  BINARY   ,\n" +
-                "excelby  BINARY   ,\n" +
-                "nbbs  STRING   ,\n" +
-                "hzblx  DECIMAL   ,\n" +
-                "sjcjfs  STRING   ,\n" +
-                "bbfl  STRING   ,\n" +
-                "hzbsjbb  STRING   ,\n" +
-                "bbzldm  STRING   ,\n" +
-                "dcdxlxdm  STRING   ,\n" +
-                "tbdyfw  STRING   ,\n" +
-                "tbhyfw  STRING   ,\n" +
-                "dcdwsl  STRING   ,\n" +
-                "bsdw  STRING   ,\n" +
-                "bsdwlxdm  STRING   ,\n" +
-                "bsfsdm  STRING   ,\n" +
-                "hzfsdm  STRING   ,\n" +
-                "re_reportid  STRING   ,\n" +
-                "sftb  STRING   ,\n" +
-                "tjzydm  STRING   ,\n" +
-                "sfglb  STRING   ,\n" +
-                "sffrb  STRING   ,\n" +
-                "has_sq_tq  STRING   ,\n" +
-                "set_row_bgcolor  STRING   ,\n" +
-                "blockjson  BINARY   ,\n" +
-                "tblx  STRING   ,\n" +
-                "yw_01  STRING   ,\n" +
-                "yw_02  STRING   ,\n" +
-                "yw_03  STRING   ,\n" +
-                "yw_04  STRING   ,\n" +
-                "yw_05  STRING   ,\n" +
-                "yw_06  STRING   ,\n" +
-                "yw_07  STRING   ,\n" +
-                "yw_08  STRING   ,\n" +
-                "yw_09  STRING   ,\n" +
+                "REPORTID  STRING   ,\n" +
+                "BH  STRING   ,\n" +
+                "DCFFFLDM  STRING   ,\n" +
+                "BBZWQC  STRING   ,\n" +
+                "BBYWQC  STRING   ,\n" +
+                "BBZWJC  STRING   ,\n" +
+                "BB  STRING   ,\n" +
+                "BBLX  STRING   ,\n" +
+                "ZYFLDM  STRING   ,\n" +
+                "ZGZY  STRING   ,\n" +
+                "TBSM  STRING   ,\n" +
+                "WH  STRING   ,\n" +
+                "DCNR  STRING   ,\n" +
+                "DCPDDM  STRING   ,\n" +
+                "DCPDMS  STRING   ,\n" +
+                "QYSJ  TIMESTAMP(6)   ,\n" +
+                "TYSJ  TIMESTAMP(6)   ,\n" +
+                "YXQZ  DATE   ,\n" +
+                "BBSX  FLOAT   ,\n" +
+                "TXSJ  FLOAT   ,\n" +
+                "TXSJMS  STRING   ,\n" +
+                "BBZTDM  STRING   ,\n" +
+                "BBJB  STRING   ,\n" +
+                "SPR  STRING   ,\n" +
+                "SPJG  STRING   ,\n" +
+                "PZHJG  STRING   ,\n" +
+                "PZWH  STRING   ,\n" +
+                "BAJG  STRING   ,\n" +
+                "BAWH  STRING   ,\n" +
+                "ZBJG  STRING   ,\n" +
+                "GLJG  STRING   ,\n" +
+                "GLJGFZR  STRING   ,\n" +
+                "WLBMC  STRING   ,\n" +
+                "BZ  STRING   ,\n" +
+                "BZH  STRING   ,\n" +
+                "CJR  STRING   ,\n" +
+                "CJSJ  TIMESTAMP(6)   ,\n" +
+                "XGR  STRING   ,\n" +
+                "XGSJ  TIMESTAMP(6)   ,\n" +
+                "TJSPSJ  TIMESTAMP(6)   ,\n" +
+                "SFYXJZLSSJ  STRING   ,\n" +
+                "BBBGSM  STRING   ,\n" +
+                "QZBH  STRING   ,\n" +
+                "SYBBID  STRING   ,\n" +
+                "SQBID  STRING   ,\n" +
+                "TQBH  STRING   ,\n" +
+                "LSBZ  STRING   ,\n" +
+                "TJDCDXJBLXDM  STRING   ,\n" +
+                "DCLYLX  STRING   ,\n" +
+                "ZBS  BINARY   ,\n" +
+                "BYWJ  BINARY   ,\n" +
+                "BDCML  STRING   ,\n" +
+                "HZGXYJ  BINARY   ,\n" +
+                "HZBSJYS  BINARY   ,\n" +
+                "BBQJBL  BINARY   ,\n" +
+                "MS  STRING   ,\n" +
+                "SPYJ  STRING   ,\n" +
+                "BFGBBID  STRING   ,\n" +
+                "SCBZ  STRING   ,\n" +
+                "SFKWHTBFW  STRING   ,\n" +
+                "HZSJLS  INT   ,\n" +
+                "GZBBBM  STRING   ,\n" +
+                "GZMLBM  STRING   ,\n" +
+                "SJYLX  STRING   ,\n" +
+                "CJBM  STRING   ,\n" +
+                "BBCJSJ  TIMESTAMP(6)   ,\n" +
+                "XDR  STRING   ,\n" +
+                "XDSJ  TIMESTAMP(6)   ,\n" +
+                "XDSM  STRING   ,\n" +
+                "BBSM  STRING   ,\n" +
+                "TBFW  STRING   ,\n" +
+                "BBQBDM  STRING   ,\n" +
+                "SSRW  STRING   ,\n" +
+                "TBSJSM  STRING   ,\n" +
+                "BBSYHY  STRING   ,\n" +
+                "HZSYJGDM  STRING   ,\n" +
+                "SJBS  BINARY   ,\n" +
+                "BYDX  BINARY   ,\n" +
+                "QSFS  STRING   ,\n" +
+                "HTMLBY  BINARY   ,\n" +
+                "EXCELBY  BINARY   ,\n" +
+                "NBBS  STRING   ,\n" +
+                "HZBLX  DECIMAL   ,\n" +
+                "SJCJFS  STRING   ,\n" +
+                "BBFL  STRING   ,\n" +
+                "HZBSJBB  STRING   ,\n" +
+                "BBZLDM  STRING   ,\n" +
+                "DCDXLXDM  STRING   ,\n" +
+                "TBDYFW  STRING   ,\n" +
+                "TBHYFW  STRING   ,\n" +
+                "DCDWSL  STRING   ,\n" +
+                "BSDW  STRING   ,\n" +
+                "BSDWLXDM  STRING   ,\n" +
+                "BSFSDM  STRING   ,\n" +
+                "HZFSDM  STRING   ,\n" +
+                "RE_REPORTID  STRING   ,\n" +
+                "SFTB  STRING   ,\n" +
+                "TJZYDM  STRING   ,\n" +
+                "SFGLB  STRING   ,\n" +
+                "SFFRB  STRING   ,\n" +
+                "HAS_SQ_TQ  STRING   ,\n" +
+                "SET_ROW_BGCOLOR  STRING   ,\n" +
+                "BLOCKJSON  BINARY   ,\n" +
+                "TBLX  STRING   ,\n" +
+                "YW_01  STRING   ,\n" +
+                "YW_02  STRING   ,\n" +
+                "YW_03  STRING   ,\n" +
+                "YW_04  STRING   ,\n" +
+                "YW_05  STRING   ,\n" +
+                "YW_06  STRING   ,\n" +
+                "YW_07  STRING   ,\n" +
+                "YW_08  STRING   ,\n" +
+                "YW_09  STRING   ,\n" +
                 "YW_10  STRING   ,\n" +
+                "     PRIMARY KEY(REPORTID) NOT ENFORCED\n" +
 
-                "     PRIMARY KEY(reportid) NOT ENFORCED\n" +
                 "     ) WITH (\n" +
                 "     'connector' = 'oracle-cdc',\n" +
-                "     'hostname' = 'localhost',\n" +
+                "     'hostname' = '172.10.120.86',\n" +
                 "     'port' = '1521',\n" +
-                "     'username' = 'family',\n" +
-                "     'password' = 'zyhcdc',\n" +
-                "     'database-name' = 'XE',\n" +
-                "     'schema-name' = 'FAMILY',\n" +
+                "     'username' = 'TEST_SHANGHAIJCPT_DB_FLINK',\n" +
+                "     'password' = 'Abc123!@Gwssi',\n" +
+                "     'database-name' = 'ora12c',\n" +
+                "     'schema-name' = 'TEST_SHANGHAIJCPT_DB_FLINK',\n" +
                 "     'table-name' = 'GH_BB_BBZC',\n" +
                 "     'debezium.log.mining.continuous.mine'='true',\n" +
                 "     'debezium.log.mining.strategy'='online_catalog',\n" +
                 "     'debezium.database.tablename.case.insensitive'='false',\n" +
                 "     'scan.startup.mode' = 'initial')";
+
+//                "     ) WITH (\n" +
+//                "     'connector' = 'oracle-cdc',\n" +
+//                "     'hostname' = 'localhost',\n" +
+//                "     'port' = '1521',\n" +
+//                "     'username' = 'family',\n" +
+//                "     'password' = 'zyhcdc',\n" +
+//                "     'database-name' = 'XE',\n" +
+//                "     'schema-name' = 'FAMILY',\n" +
+//                "     'table-name' = 'GH_BB_BBZC',\n" +
+//                "     'debezium.log.mining.continuous.mine'='true',\n" +
+//                "     'debezium.log.mining.strategy'='online_catalog',\n" +
+//                "     'debezium.database.tablename.case.insensitive'='false',\n" +
+//                "     'scan.startup.mode' = 'initial')";
     }
 
     @Override
@@ -155,7 +171,7 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
         AbstractService<GhBbBbzc> abstractService = new GhBbBbzcService();
         tableResult.collect().forEachRemaining(item -> {
             GhBbBbzc info = GhBbBbzc.builder().king(item.getKind().shortString())
-                    .reportid(String.valueOf(item.getField("REPORTIDSEX")))
+                    .reportid(String.valueOf(item.getField("REPORTID")))
                     .bh(String.valueOf(item.getField("BH")))
                     .dcfffldm(String.valueOf(item.getField("DCFFFLDM")))
                     .bbzwqc(String.valueOf(item.getField("BBZWQC")))
