@@ -16,8 +16,6 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TemplateEntity {
-    //flink表的表名称
-    private String infoName;
     //flink表的主键
     private String pkey;
     //flink表的数据库名称

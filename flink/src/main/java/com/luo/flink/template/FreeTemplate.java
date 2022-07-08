@@ -57,6 +57,7 @@ public class FreeTemplate {
      * 将模版内容转换为对应的字符串类型
      *
      * @param templatePath 当前的模版路径
+     * @param type         当前的模版名称=flink内存表名称
      */
     private String generateTemplateStr(String templatePath, String type) {
         String content = null;
@@ -105,6 +106,7 @@ public class FreeTemplate {
         Map<String, Object> dataMap = templateEntity.entityToMap();
         dataMap.put("properties", Joiner.on(",").join(templateEntity.getProperties()) + ",");
         String url = properties.getProperty("url");
+        dataMap.put("infoName", type);
         dataMap.put("connector", properties.getProperty("connector"));
         dataMap.put("hostName", hostName(url));
         dataMap.put("port", host(url));
@@ -115,6 +117,8 @@ public class FreeTemplate {
 
     /**
      * 硬代码获取当前的主机名称
+     *
+     * @param url oracle jdbc url
      */
     private static String hostName(String url) {
         return url.substring(url.indexOf("@") + 1, url.lastIndexOf(":"));
@@ -122,6 +126,8 @@ public class FreeTemplate {
 
     /**
      * 硬代码获取当前的端口号
+     *
+     * @param url oracle jdbc url
      */
     private static String host(String url) {
         return url.substring(url.lastIndexOf(":") + 1, url.lastIndexOf("/"));

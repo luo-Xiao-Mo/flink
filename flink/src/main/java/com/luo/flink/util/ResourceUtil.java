@@ -23,6 +23,7 @@ public class ResourceUtil {
      * 读取资源文件信息
      *
      * @param filesName 读取的资源文件名称
+     * @return Properties 返回Properties
      **/
     public static Properties readPro(String filesName) {
         Properties pro = new Properties();
@@ -36,6 +37,9 @@ public class ResourceUtil {
         return pro;
     }
 
+    /**
+     * 读取当前的任务文件
+     */
     public static JSONArray readJson() {
         JSONObject jsonObject = readJson("task.json");
         JSONArray jsonArray = null;
@@ -45,6 +49,12 @@ public class ResourceUtil {
         return jsonArray;
     }
 
+    /**
+     * 读取资源文件信息
+     *
+     * @param sourceName 文件名称
+     * @return JSONObject 返回JSONObject
+     **/
     public static JSONObject readJson(String sourceName) {
         if (StringUtils.isEmpty(sourceName)) throw new IllegalArgumentException("文件名称不能为空");
         ClassLoader classLoader = ReflectUtil.class.getClassLoader();

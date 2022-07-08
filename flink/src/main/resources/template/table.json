@@ -5,7 +5,6 @@
       "SNAME STRING",
       "SEX STRING"
     ],
-    "infoName": "info",
     "pkey": "SID",
     "dataBaseName": "XE",
     "schemName": "FAMILY",
