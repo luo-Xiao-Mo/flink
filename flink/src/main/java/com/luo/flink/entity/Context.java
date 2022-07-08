@@ -66,7 +66,7 @@ public class Context {
             for (Object item : jsonArray) {
                 try {
                     Class<?> aClass = Class.forName(item.toString());
-                    if (!aClass.isInstance(AbstractTaskService.class)) {
+                    if (!AbstractTaskService.class.isAssignableFrom(aClass)) {
                         throw new RuntimeException("当前配置信息不是任务类类型");
                     }
                     serviceList.add((AbstractTaskService) aClass.newInstance());
