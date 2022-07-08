@@ -61,9 +61,9 @@ public class DruidUtil {
      */
     private static void close(Connection conn, Statement stm, ResultSet rs) {
         try {
-            if (conn != null) conn.close();
+            if (rs != null) rs.close();
         } catch (Exception e) {
-            log.error(String.format("关闭连接对象异常:【%s】", e.getMessage()));
+            log.error(String.format("关闭结果集对象异常:【%s】", e.getMessage()));
         }
         try {
             if (stm != null) stm.close();
@@ -71,9 +71,9 @@ public class DruidUtil {
             log.error(String.format("关闭执行对象异常:【%s】", e.getMessage()));
         }
         try {
-            if (rs != null) rs.close();
+            if (conn != null) conn.close();
         } catch (Exception e) {
-            log.error(String.format("关闭结果集对象异常:【%s】", e.getMessage()));
+            log.error(String.format("关闭连接对象异常:【%s】", e.getMessage()));
         }
     }
 
