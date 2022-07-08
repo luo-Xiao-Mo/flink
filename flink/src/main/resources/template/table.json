@@ -1,0 +1,14 @@
+{
+  "info": {
+    "properties": [
+      "SID STRING",
+      "SNAME STRING",
+      "SEX STRING"
+    ],
+    "infoName": "info",
+    "pkey": "SID",
+    "dataBaseName": "XE",
+    "schemName": "FAMILY",
+    "tableName": "INFO"
+  }
+}
