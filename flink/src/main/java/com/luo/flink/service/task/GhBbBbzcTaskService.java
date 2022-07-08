@@ -1,23 +1,21 @@
 package com.luo.flink.service.task;
 
-import com.luo.flink.entity.business.CJCJTBJD;
 import com.luo.flink.entity.business.GhBbBbzc;
 import com.luo.flink.service.dao.AbstractService;
-import com.luo.flink.service.dao.CjCjTbjdService;
 import com.luo.flink.service.dao.GhBbBbzcService;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
+import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.Clob;
-import java.sql.Timestamp;
 
 public class GhBbBbzcTaskService extends AbstractTaskService {
     @Override
     String getSql() {
         return "CREATE TABLE GH_BB_BBZC (\n" +
                 "REPORTID  STRING   ,\n" +
-                "BH  STRING   ,\n" +
+               "BH  STRING   ,\n" +
                 "DCFFFLDM  STRING   ,\n" +
                 "BBZWQC  STRING   ,\n" +
                 "BBYWQC  STRING   ,\n" +
@@ -31,11 +29,11 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
                 "DCNR  STRING   ,\n" +
                 "DCPDDM  STRING   ,\n" +
                 "DCPDMS  STRING   ,\n" +
-                "QYSJ  TIMESTAMP(6)   ,\n" +
+                 "QYSJ  TIMESTAMP(6)   ,\n" +
                 "TYSJ  TIMESTAMP(6)   ,\n" +
-                "YXQZ  DATE   ,\n" +
-                "BBSX  FLOAT   ,\n" +
-                "TXSJ  FLOAT   ,\n" +
+                "YXQZ  TIMESTAMP(6)   ,\n" +
+                "BBSX  DECIMAL(10,5)   ,\n" +
+                "TXSJ  DECIMAL(10,5)   ,\n" +
                 "TXSJMS  STRING   ,\n" +
                 "BBZTDM  STRING   ,\n" +
                 "BBJB  STRING   ,\n" +
@@ -65,12 +63,12 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
                 "LSBZ  STRING   ,\n" +
                 "TJDCDXJBLXDM  STRING   ,\n" +
                 "DCLYLX  STRING   ,\n" +
-                "ZBS  BINARY   ,\n" +
-                "BYWJ  BINARY   ,\n" +
+                "ZBS   BINARY(500)   ,\n" +
+                "BYWJ   BINARY(500)   ,\n" +
                 "BDCML  STRING   ,\n" +
-                "HZGXYJ  BINARY   ,\n" +
-                "HZBSJYS  BINARY   ,\n" +
-                "BBQJBL  BINARY   ,\n" +
+                "HZGXYJ   BINARY(500)   ,\n" +
+                "HZBSJYS   BINARY(500)   ,\n" +
+                "BBQJBL   BINARY(500)   ,\n" +
                 "MS  STRING   ,\n" +
                 "SPYJ  STRING   ,\n" +
                 "BFGBBID  STRING   ,\n" +
@@ -92,11 +90,11 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
                 "TBSJSM  STRING   ,\n" +
                 "BBSYHY  STRING   ,\n" +
                 "HZSYJGDM  STRING   ,\n" +
-                "SJBS  BINARY   ,\n" +
-                "BYDX  BINARY   ,\n" +
+                "SJBS   BINARY(500)   ,\n" +
+                "BYDX   BINARY(500)   ,\n" +
                 "QSFS  STRING   ,\n" +
-                "HTMLBY  BINARY   ,\n" +
-                "EXCELBY  BINARY   ,\n" +
+                "HTMLBY   BINARY(500)   ,\n" +
+                "EXCELBY   BINARY(500)   ,\n" +
                 "NBBS  STRING   ,\n" +
                 "HZBLX  DECIMAL   ,\n" +
                 "SJCJFS  STRING   ,\n" +
@@ -118,7 +116,7 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
                 "SFFRB  STRING   ,\n" +
                 "HAS_SQ_TQ  STRING   ,\n" +
                 "SET_ROW_BGCOLOR  STRING   ,\n" +
-                "BLOCKJSON  BINARY   ,\n" +
+                "BLOCKJSON   BINARY(500)   ,\n" +
                 "TBLX  STRING   ,\n" +
                 "YW_01  STRING   ,\n" +
                 "YW_02  STRING   ,\n" +
@@ -130,6 +128,7 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
                 "YW_08  STRING   ,\n" +
                 "YW_09  STRING   ,\n" +
                 "YW_10  STRING   ,\n" +
+
                 "     PRIMARY KEY(REPORTID) NOT ENFORCED\n" +
 
                 "     ) WITH (\n" +
@@ -186,11 +185,11 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
                     .dcnr(String.valueOf(item.getField("DCNR")))
                     .dcpddm(String.valueOf(item.getField("DCPDDM")))
                     .dcpdms(String.valueOf(item.getField("DCPDMS")))
-                    .qysj((Timestamp) (item.getField("QYSJ")))
-                    .tysj((Timestamp) (item.getField("TYSJ")))
-                    .yxqz((Timestamp) (item.getField("YXQZ")))
-                    .bbsx((Float) item.getField("BBSX"))
-                    .txsj((Float) item.getField("TXSJ"))
+                    .qysj(getTimestamp(item,"TYSJ"))
+                    .tysj(getTimestamp(item,"TYSJ"))
+                    .yxqz(getTimestamp(item,"YXQZ"))
+                    .bbsx((BigDecimal) item.getField("BBSX"))
+                    .txsj((BigDecimal) item.getField("TXSJ"))
                     .txsjms(String.valueOf(item.getField("TXSJMS")))
                     .bbztdm(String.valueOf(item.getField("BBZTDM")))
                     .bbjb(String.valueOf(item.getField("BBJB")))
@@ -207,10 +206,10 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
                     .bz(String.valueOf(item.getField("BZ")))
                     .bzh(String.valueOf(item.getField("BZH")))
                     .cjr(String.valueOf(item.getField("CJR")))
-                    .cjsj((Timestamp) item.getField("CJSJ"))
+                    .cjsj(getTimestamp( item,"CJSJ"))
                     .xgr(String.valueOf(item.getField("XGR")))
-                    .xgsj((Timestamp) item.getField("XGSJ"))
-                    .tjspsj((Timestamp) item.getField("TJSPSJ"))
+                    .xgsj(getTimestamp(item,"XGSJ"))
+                    .tjspsj(getTimestamp(item,"TJSPSJ"))
                     .sfyxjzlssj(String.valueOf(item.getField("SFYXJZLSSJ")))
                     .bbbgsm(String.valueOf(item.getField("BBBGSM")))
                     .qzbh(String.valueOf(item.getField("QZBH")))
@@ -234,11 +233,11 @@ public class GhBbBbzcTaskService extends AbstractTaskService {
                     .hzsjls((Integer) item.getField("HZSJLS"))
                     .gzbbbm(String.valueOf(item.getField("GZBBBM")))
                     .gzmlbm(String.valueOf(item.getField("GZMLBM")))
-                    .sjylx((Timestamp) item.getField("SJYLX"))
+                    .sjylx(getTimestamp(item,"SJYLX"))
                     .cjbm(String.valueOf(item.getField("CJBM")))
-                    .bbcjsj((Timestamp) item.getField("BBCJSJ"))
+                    .bbcjsj(getTimestamp(item,"BBCJSJ"))
                     .xdr(String.valueOf(item.getField("XDR")))
-                    .xdsj((Timestamp) item.getField("XDSJ"))
+                    .xdsj(getTimestamp(item,"XDSJ"))
                     .xdsm(String.valueOf(item.getField("XDSM")))
                     .bbsm(String.valueOf(item.getField("BBSM")))
                     .tbfw(String.valueOf(item.getField("TBFW")))

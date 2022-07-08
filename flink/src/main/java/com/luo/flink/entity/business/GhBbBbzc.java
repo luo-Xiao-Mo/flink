@@ -4,6 +4,7 @@ package com.luo.flink.entity.business;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Timestamp;
@@ -31,8 +32,8 @@ public class GhBbBbzc {
     private Timestamp qysj;
     private Timestamp tysj;
     private Timestamp yxqz;
-    private Float bbsx;
-    private Float txsj;
+    private BigDecimal bbsx;
+    private BigDecimal txsj;
     private String txsjms;
     private String bbztdm;
     private String bbjb;

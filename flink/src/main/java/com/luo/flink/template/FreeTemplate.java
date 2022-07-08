@@ -49,10 +49,6 @@ public class FreeTemplate {
         configuration.setClassForTemplateLoading(this.getClass(), "/template");
     }
 
-    public String generateStr() {
-        return generateTemplateStr("table.ftl", freeName);
-    }
-
     /**
      * 将模版内容转换为对应的字符串类型
      *
@@ -72,6 +68,10 @@ public class FreeTemplate {
             log.error("加载模版异常:", e.getMessage());
         }
         return content;
+    }
+
+    public String generateStr() {
+        return generateTemplateStr("table.ftl", freeName);
     }
 
     /**
