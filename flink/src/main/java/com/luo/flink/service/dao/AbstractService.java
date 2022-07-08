@@ -18,6 +18,7 @@ public abstract class AbstractService<T> implements King<T> {
 
     private Connection connection;
 
+    private int i ;
     public void invoke(T info) {
         String kind = getKing(info);
         String sql = null;
@@ -39,11 +40,14 @@ public abstract class AbstractService<T> implements King<T> {
         try {
             connection = DruidUtil.getConn();
             preparedStatement = connection.prepareStatement(sql);
+            i++;
             preparedStatement.execute();
         } catch (Exception e) {
-            log.error(e.getMessage());
+            //log.error(e.getMessage());
+            System.out.println(i);
+            throw new RuntimeException(e.getMessage());
         } finally {
-            DruidUtil.close(connection, preparedStatement);
+           // DruidUtil.close(connection, preparedStatement);
         }
     }
 

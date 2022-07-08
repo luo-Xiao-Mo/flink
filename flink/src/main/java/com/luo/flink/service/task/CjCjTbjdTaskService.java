@@ -1,8 +1,10 @@
 package com.luo.flink.service.task;
 
 import com.luo.flink.entity.business.CJCJTBJD;
+import com.luo.flink.entity.business.Info;
 import com.luo.flink.service.dao.AbstractService;
 import com.luo.flink.service.dao.CjCjTbjdService;
+import com.luo.flink.service.dao.InfoService;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
@@ -10,6 +12,7 @@ import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 public class CjCjTbjdTaskService extends AbstractTaskService {
     @Override
     void handlerTableResult(TableResult tableResult) {
+
         AbstractService<CJCJTBJD> abstractService = new CjCjTbjdService();
         tableResult.collect().forEachRemaining(item -> {
             CJCJTBJD info = CJCJTBJD.builder().king(item.getKind().shortString())
@@ -249,6 +252,19 @@ public class CjCjTbjdTaskService extends AbstractTaskService {
 
                 "     ) WITH (\n" +
                 "     'connector' = 'oracle-cdc',\n" +
+                "     'hostname' = '172.10.120.86',\n" +
+                "     'port' = '1521',\n" +
+                "     'username' = 'TEST_SHANGHAIJCPT_DB_FLINK',\n" +
+                "     'password' = 'Abc123!@Gwssi',\n" +
+                "     'database-name' = 'ora12c',\n" +
+                "     'schema-name' = 'TEST_SHANGHAIJCPT_DB_FLINK',\n" +
+                "     'table-name' = 'CJ_CJ_TBJD',\n" +
+                "     'debezium.log.mining.continuous.mine'='true',\n" +
+                "     'debezium.log.mining.strategy'='online_catalog',\n" +
+                "     'debezium.database.tablename.case.insensitive'='false',\n" +
+                "     'scan.startup.mode' = 'initial')";
+/*
+                "     'connector' = 'oracle-cdc',\n" +
                 "     'hostname' = 'localhost',\n" +
                 "     'port' = '1521',\n" +
                 "     'username' = 'family',\n" +
@@ -260,6 +276,7 @@ public class CjCjTbjdTaskService extends AbstractTaskService {
                 "     'debezium.log.mining.strategy'='online_catalog',\n" +
                 "     'debezium.database.tablename.case.insensitive'='false',\n" +
                 "     'scan.startup.mode' = 'initial')";
+*/
     }
 
     @Override

@@ -7,7 +7,7 @@ public class InfoService extends AbstractService<Info> {
 
     @Override
     String insertSql(Info info) {
-        return "insert into FAMILY.US (SID, SNAME, SEX) values ("
+        return "insert into TEST_SHANGHAIJCPT_DB_FLINK.INFO (SID, SNAME, SEX) values ("
                 + "'" + info.getSID() + "',"
                 + "'" + info.getSNAME() + "',"
                 + "'" + info.getSEX() + "'" + ")";
