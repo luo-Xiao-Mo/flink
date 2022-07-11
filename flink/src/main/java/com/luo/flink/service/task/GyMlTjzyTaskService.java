@@ -14,7 +14,7 @@ public class GyMlTjzyTaskService extends AbstractTaskService {
                 "     CODE STRING,\n" +
                 "     NAME STRING,\n" +
                 "     PRIMARY KEY(CODE) NOT ENFORCED\n" +
-                "     ) WITH (\n" +
+                /*"     ) WITH (\n" +
                 "     'connector' = 'oracle-cdc',\n" +
                 "     'hostname' = 'localhost',\n" +
                 "     'port' = '1521',\n" +
@@ -22,6 +22,19 @@ public class GyMlTjzyTaskService extends AbstractTaskService {
                 "     'password' = 'zyhcdc',\n" +
                 "     'database-name' = 'XE',\n" +
                 "     'schema-name' = 'FAMILY',\n" +
+                "     'table-name' = 'GY_ML_TJZY',\n" +
+                "     'debezium.log.mining.continuous.mine'='true',\n" +
+                "     'debezium.log.mining.strategy'='online_catalog',\n" +
+                "     'debezium.database.tablename.case.insensitive'='false',\n" +
+                "     'scan.startup.mode' = 'initial')";*/
+                "     ) WITH (\n" +
+                "     'connector' = 'oracle-cdc',\n" +
+                "     'hostname' = '172.10.120.86',\n" +
+                "     'port' = '1521',\n" +
+                "     'username' = 'TEST_SHANGHAIJCPT_DB_FLINK',\n" +
+                "     'password' = 'Abc123!@Gwssi',\n" +
+                "     'database-name' = 'ora12c',\n" +
+                "     'schema-name' = 'TEST_SHANGHAIJCPT_DB_FLINK',\n" +
                 "     'table-name' = 'GY_ML_TJZY',\n" +
                 "     'debezium.log.mining.continuous.mine'='true',\n" +
                 "     'debezium.log.mining.strategy'='online_catalog',\n" +
