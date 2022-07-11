@@ -9,38 +9,38 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 
 @Slf4j
 public abstract class AbstractService<T> implements King<T> {
 
-    private PreparedStatement preparedStatement;
+    PreparedStatement preparedStatement;
 
-    private Connection connection;
+    Connection connection;
 
     public void invoke(T info) {
         String kind = getKing(info);
         String sql = null;
-        switch (kind) {
-            case OperateType.ADD_:
-                sql = insertSql(info);
-                break;
-            case OperateType.UPDATE_:
-                sql = updateSql(info);
-                break;
-            case OperateType.DELETE_:
-                sql = deleteSql(info);
-                break;
-            default:
-                break;
-        }
-        if (StringUtils.isEmpty(sql)) return;
-        System.out.println(sql);
         try {
             connection = DruidUtil.getConn();
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.execute();
+            switch (kind) {
+                case OperateType.ADD_:
+                    sql = insertSql(info);
+                    break;
+                case OperateType.UPDATE_:
+                    sql = updateSql(info);
+                    break;
+                case OperateType.DELETE_:
+                    sql = deleteSql(info);
+                    break;
+                default:
+                    break;
+            }
+            if (StringUtils.isEmpty(sql)) return;
+            System.out.println(sql);
+            preparedStatement.executeUpdate();
         } catch (Exception e) {
             log.error(e.getMessage());
         } finally {
@@ -48,11 +48,11 @@ public abstract class AbstractService<T> implements King<T> {
         }
     }
 
-    String ifNotNull(Object obj){
-        if (obj instanceof String){
-            return "null".equals((String)obj)? "null" : "'"+ obj +"'";
-        }else if(obj instanceof Timestamp){
-            return  obj == null ? "null" : "'"+ obj +"'" ;
+    String ifNotNull(Object obj) {
+        if (obj instanceof String) {
+            return "null".equals(obj) ? "null" : "'" + obj + "'";
+        } else if (obj instanceof Timestamp) {
+            return obj == null ? "null" : "'" + obj + "'";
         }
         return null;
     }
@@ -61,11 +61,11 @@ public abstract class AbstractService<T> implements King<T> {
         this.connection = connection;
     }
 
-    abstract String insertSql(T info);
+    abstract String insertSql(T info) throws SQLException;
 
-    abstract String updateSql(T info);
+    abstract String updateSql(T info) throws SQLException;
 
-    abstract String deleteSql(T info);
+    abstract String deleteSql(T info) throws SQLException;
 
 }
 
