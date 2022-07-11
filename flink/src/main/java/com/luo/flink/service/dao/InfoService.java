@@ -7,15 +7,17 @@ public class InfoService extends AbstractService<Info> {
 
     @Override
     String insertSql(Info info) {
-        return "insert into TEST_SHANGHAIJCPT_DB_FLINK.INFO (SID, SNAME, SEX) values ("
+        return "insert into TEST_SHANGHAIJCPT_DB_FLINK.MESSAGE (SID, SNAME, SEX,b1,c1) values ("
                 + "'" + info.getSID() + "',"
                 + "'" + info.getSNAME() + "',"
-                + "'" + info.getSEX() + "'" + ")";
+                + "'" + info.getSNAME() + "',"
+                 + info.getB1() + ","
+                 + info.getC1() + ")";
     }
 
     @Override
     String updateSql(Info info) {
-        return "update FAMILY.US set SNAME = " + "'" + info.getSNAME() + "'," + "SEX =" + "'" + info.getSEX() + "'" + " where SID=" + info.getSID();
+        return "update MESSAGE set SNAME = " + "'" + info.getSNAME() + "'," + "SEX =" + "'" + info.getSEX() + "'" + " where SID=" + info.getSID();
     }
 
     @Override

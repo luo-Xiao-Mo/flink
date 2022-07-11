@@ -6,6 +6,9 @@ import com.luo.flink.service.dao.InfoService;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
+import java.sql.Blob;
+import java.sql.Clob;
+
 public class InfoTaskService extends AbstractTaskService {
     @Override
     void handlerTableResult(TableResult tableResult) {

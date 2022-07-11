@@ -3,11 +3,13 @@
     "properties": [
       "SID STRING",
       "SNAME STRING",
-      "SEX STRING"
+      "SEX STRING",
+      "B1 BINARY(500)",
+      "C1 BINARY(500)"
     ],
     "pkey": "SID",
-    "dataBaseName": "XE",
-    "schemName": "FAMILY",
+    "dataBaseName": "ora12c",
+    "schemName": "TEST_SHANGHAIJCPT_DB_FLINK",
     "tableName": "INFO"
   }
 }
