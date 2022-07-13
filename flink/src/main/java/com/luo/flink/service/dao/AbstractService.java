@@ -40,6 +40,8 @@ public abstract class AbstractService<T> implements King<T> {
             }
             if (StringUtils.isEmpty(sql)) return;
             System.out.println(sql);
+            connection = DruidUtil.getConn();
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             log.error(e.getMessage());

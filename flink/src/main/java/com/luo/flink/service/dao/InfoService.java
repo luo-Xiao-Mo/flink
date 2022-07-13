@@ -23,10 +23,21 @@ public class InfoService extends AbstractService<Info> {
         preparedStatement.setString(1, info.getSID());
         preparedStatement.setString(2, info.getSNAME());
         preparedStatement.setString(3, info.getSEX());
-        SerialClob clob = new SerialClob(info.getC1());
-        SerialBlob blob = new SerialBlob(info.getB1());
-        preparedStatement.setBlob(4, blob);
-        preparedStatement.setClob(5, clob);
+
+        if (info.getB1() != null) {
+            SerialBlob b = new SerialBlob(info.getB1());
+            preparedStatement.setBlob(4, b);
+        } else {
+            preparedStatement.setString(4, "");
+        }
+        if (info.getC1() != null) {
+            SerialClob c = new SerialClob(info.getC1());
+            preparedStatement.setClob(5, c);
+
+        } else {
+            preparedStatement.setString(5, "");
+        }
+
         return sql;
     }
 
@@ -47,8 +58,8 @@ public class InfoService extends AbstractService<Info> {
 
     @Override
     String deleteSql(Info info) throws SQLException {
-//        return "delete from FAMILY.US where SID =" + info.getSID();
-        String sql = "delete from FAMILY.US where SID =?";
+//        return "delete from TEST_SHANGHAIJCPT_DB_FLINK.INFO_II where SID =" + info.getSID();
+        String sql = "delete from TEST_SHANGHAIJCPT_DB_FLINK.INFO_II where SID =?";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, info.getSID());
         return sql;
