@@ -24,19 +24,19 @@ public class InfoService extends AbstractService<Info> {
         preparedStatement.setString(2, info.getSNAME());
         preparedStatement.setString(3, info.getSEX());
 
-        if (info.getB1() != null) {
-            SerialBlob b = new SerialBlob(info.getB1());
-            preparedStatement.setBlob(4, b);
-        } else {
-            preparedStatement.setString(4, "");
-        }
-        if (info.getC1() != null) {
+//        if (info.getB1() != null) {
+//            SerialBlob b = new SerialBlob(info.getB1());
+//            preparedStatement.setBlob(4, b);
+//        } else {
+//            preparedStatement.setString(4, "");
+//        }
+        /*if (info.getC1() != null) {
             SerialClob c = new SerialClob(info.getC1());
             preparedStatement.setClob(5, c);
 
         } else {
             preparedStatement.setString(5, "");
-        }
+        }*/
 
         return sql;
     }
@@ -48,10 +48,8 @@ public class InfoService extends AbstractService<Info> {
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, info.getSNAME());
         preparedStatement.setString(2, info.getSEX());
-        SerialClob clob = new SerialClob(info.getC1());
-        SerialBlob blob = new SerialBlob(info.getB1());
-        preparedStatement.setBlob(3, blob);
-        preparedStatement.setClob(4, clob);
+//        SerialBlob blob = new SerialBlob(info.getB1());
+//        preparedStatement.setBlob(3, blob);
         preparedStatement.setString(5, info.getSID());
         return sql;
     }

@@ -1,20 +1,22 @@
 package com.luo.flink.entity.business;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.flink.api.java.functions.KeySelector;
+
+import java.sql.Blob;
 
 @Builder
 @Data
-public class GyMlTjzy implements KeySelector {
+@NoArgsConstructor
+@AllArgsConstructor
+public class GyMlTjzy  {
 
     private String king;
-    private String code;
-    private String name;
+    private String CODE;
+    private String NAME;
 
-    @Override
-    public Object getKey(Object o) throws Exception {
-        return null;
-    }
 }

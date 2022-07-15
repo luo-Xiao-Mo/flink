@@ -17,7 +17,5 @@ public class InfoJoinyMlTjzy {
     private String SID;
     private String SNAME;
     private String SEX;
-    private Blob b1;
-    private Clob c1;
 
 }

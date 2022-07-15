@@ -18,7 +18,6 @@ public class InfoTaskService extends AbstractTaskService {
                     .SEX(String.valueOf(item.getField("SEX")))
                     .SID(String.valueOf(item.getField("SID")))
                     .SNAME(String.valueOf(item.getField("SNAME")))
-                    .b1((Blob) item.getField("B1"))
                     .build();
             abstractService.invoke(info);
         });
